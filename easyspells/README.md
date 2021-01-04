@@ -8,8 +8,8 @@ Easyspells is a relatively simple addon that will auto-tier certain spells based
 The purpose is to use easyspells commands in your macros as you level or if you simple want to have an all-in-one macro for spamming fires, as an example.
 
 ## How to Use
-typing <b>/es spell</b> will cast the appropriate tier of the spell.<br/>
- If using in macros, use <b>/console es spell</b>
+typing <b>//es spell</b> into the chatbox will cast the appropriate tier of the spell.<br/>
+ If using in macros, use <b>/console es spell</b> to do the same.
  
  ## Supported Spells
  Stone<br/>
