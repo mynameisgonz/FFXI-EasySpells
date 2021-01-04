@@ -12,7 +12,7 @@ typing /es <spell> will cast the appropriate tier of the spell.
 If using in macros, use /console es <spell>
  
  ## Supported Spells
- Stone
+ Stone<br/>
  Stonega
  Stonera
  Geohelix
