@@ -1,5 +1,5 @@
 _addon.name = 'Easy Spells'
-_addon.version = '1.0'
+_addon.version = '1.1'
 _addon.author = 'Mynameisgonz'
 _addon.commands = {'easyspells','es'}
 
@@ -9,28 +9,23 @@ require 'luau'
 function can_cast(spellName)
 	local spell = res.spells:with('en',spellName)
 	local spells = windower.ffxi.get_spells()
-	if spell and spells then
-		for spellId,bool in pairs(spells) do
-			-- spell is learned
-			if spell.id == spellId then
-				local player = windower.ffxi.get_player()
-				local mjob = player.main_job_id		
-				local mlvl = player.main_job_level
-				local sjob = player.sub_job_id
-				local slvl = player.sub_job_level
-				local jp = player.job_points[string.lower(player.main_job)].jp_spent
-				if ((spell.levels[mjob] and mlvl >= spell.levels[mjob]) or (spell.levels[sjob] and slvl >= spell.levels[sjob])) or (spell.levels[mjob] and spell.levels[mjob] > 99 and jp and jp >= spell.levels[mjob]) then
-					local recasts = windower.ffxi.get_spell_recasts()
-					-- spell is not on cooldown
-					if recasts and recasts[spellId] == 0 then
-						-- player has mp to cost
-						if windower.ffxi.get_player() and windower.ffxi.get_player().vitals.mp >= spell.mp_cost then
-							return true
-						end
-					end
+	if spell and spells and spells[spell.id] then
+		local player = windower.ffxi.get_player()
+		local mjob = player.main_job_id		
+		local mlvl = player.main_job_level
+		local sjob = player.sub_job_id
+		local slvl = player.sub_job_level
+		local jp = player.job_points[string.lower(player.main_job)].jp_spent
+		if ((spell.levels[mjob] and mlvl >= spell.levels[mjob]) or (spell.levels[sjob] and slvl >= spell.levels[sjob])) or (spell.levels[mjob] and spell.levels[mjob] > 99 and jp and jp >= spell.levels[mjob]) then
+			local recasts = windower.ffxi.get_spell_recasts()
+			-- spell is not on cooldown
+			if recasts and recasts[spell.id] == 0 then
+				-- player has mp to cast
+				if player and player.vitals.mp >= spell.mp_cost then
+					return true
 				end
 			end
-		end	
+		end
 	end
 	return false
 end
@@ -120,12 +115,16 @@ windower.register_event('addon command', function(...)
     local args = {...}
 	for cat,spell in pairs(spellbook) do
 		if string.lower(args[1]) == cat then
-			check_tier(spell.max,spell.name)
+			if args[2] and string.lower(args[2]) == 'me' then
+				check_tier(spell.max,spell.name,args[2])
+			else
+				check_tier(spell.max,spell.name)
+			end
 		end
 	end
 end)
 
-function check_tier(cat,name)
+function check_tier(cat,name,target)
 	local potential = nil
 	for i=1,cat do
 		local spell = name .. tiers[i]
@@ -134,8 +133,13 @@ function check_tier(cat,name)
 		end
 	end
 	if potential then
-		cast_spell(potential,'t')
-		return
+		if target then
+			cast_spell(potential,target)
+			return
+		else
+			cast_spell(potential,'t')
+			return
+		end
 	end
 	print('EASYSPELL: You have no available spell for ' .. name)
 end
