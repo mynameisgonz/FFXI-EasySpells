@@ -8,8 +8,9 @@ Easyspells is a relatively simple addon that will auto-tier certain spells based
 The purpose is to use easyspells commands in your macros as you level or if you simple want to have an all-in-one macro for spamming fires, as an example.
 
 ## How to Install
-download easyspells zip by clicking the green <b>CODE</b> button and selecting <b>DOWNLOAD ZIP</b>.<br/>
-Unzip and place the <b>easyspells</b> folder in your windower's /addon directory.<br/>
+download The EasySpells zip file <a href="https://github.com/mynameisgonz/FFXI-EasySpells/archive/main.zip">Here</a>.
+Unzip and place the <b>FFXI-EasySpells-main</b> folder in your windower's /addon directory.<br/>
+Rename <b>FFXI-EasySpells-main</b> to <b>easyspells</b>
 
 ## How to Use
 typing <b>//es spell</b> into the chatbox will cast the appropriate tier of the spell.<br/>
