@@ -9,8 +9,7 @@ The purpose is to use easyspells commands in your macros as you level or if you 
 
 ## How to Install
 download easyspells zip by clicking the green <b>CODE</b> button and selecting <b>DOWNLOAD ZIP</b>.<br/>
-Unzip and place the <b>FFXI-EasySpells-main</b> folder in your windower's /addon directory.<br/>
-Rename <b>FFXI-EasySpells-main</b> to <b>easyspells</b>
+Unzip and place the <b>easyspells</b> folder in your windower's /addon directory.<br/>
 
 ## How to Use
 typing <b>//es spell</b> into the chatbox will cast the appropriate tier of the spell.<br/>
