@@ -14,7 +14,7 @@ download easyspells folder and place it in your windower's /addon directory.
 typing <b>//es spell</b> into the chatbox will cast the appropriate tier of the spell.<br/>
  If using in macros, use <b>/console es spell</b> to do the same.
  
- ## Supported Spells
+ ## Supported Spells (you can type them out all lowercase or with uppercase, it doesnt matter)
  Stone<br/>
  Stonega<br/>
  Stonera<br/>
