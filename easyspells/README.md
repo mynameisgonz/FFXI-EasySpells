@@ -1,0 +1,2 @@
+# FFXI/easyspells
+ 
